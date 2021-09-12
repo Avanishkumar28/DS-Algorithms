@@ -1,7 +1,8 @@
-#Data Structures and algorithms in Java
-## An Intro to Dynamic Programming
+# Data Structures and algorithms in Java
 
 ---
+
+## An Intro to Dynamic Programming
 
 ### Memoization Recipe
 
