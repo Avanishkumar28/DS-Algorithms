@@ -31,10 +31,12 @@ public class AllConstruct {
         return result;
     }
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n^m)
-    //Space Complexity => O(m)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n^m)
+     * Space Complexity => O(m)
+     */
     public static List<List<String>> allConstructMemo(String target, String[] words){
         Map<String, List<List<String>>> memo = new HashMap<>();
         return allConstructMemo(target, words, memo);
@@ -82,40 +84,40 @@ public class AllConstruct {
         String[] words5 = new String[]{"e", "ee", "eee", "eeeee", "eeeaaeee"};
 
         System.out.println(allConstruct(word1, words1));
-        //[
-        //  [abc, def]
-        //]
+        /*[
+          [abc, def]
+        ]*/
         System.out.println(allConstruct(word2, words2));
-        // []
+        /* []*/
         System.out.println(allConstruct(word3, words3));
-        //[
-        // [purp, le],
-        // [p, ur, p, le]
-        //]
+        /*[
+         [purp, le],
+         [p, ur, p, le]
+        ]*/
 
         long start = System.currentTimeMillis();
         System.out.println(allConstruct(word4, words4));
-        //[
-        // [enter, a, p, ot, ent, p, ot],
-        // [enter, a, p, ot, ent, p, o, t],
-        // [enter, a, p, o, t, ent, p, ot],
-        // [enter, a, p, o, t, ent, p, o, t]
-        //]
+        /*[
+         [enter, a, p, ot, ent, p, ot],
+         [enter, a, p, ot, ent, p, o, t],
+         [enter, a, p, o, t, ent, p, ot],
+         [enter, a, p, o, t, ent, p, o, t]
+        ]*/
         System.out.println(allConstruct(word5, words5));
-        //[]
+        /*[]*/
         long end = System.currentTimeMillis();
         System.out.println("Time Taken by Recursive: "+(end-start)+"ms");
 
         long startMemo = System.currentTimeMillis();
         System.out.println(allConstructMemo(word4, words4));
-        //[
-        // [enter, a, p, ot, ent, p, ot],
-        // [enter, a, p, ot, ent, p, o, t],
-        // [enter, a, p, o, t, ent, p, ot],
-        // [enter, a, p, o, t, ent, p, o, t]
-        //]
+        /*[
+         [enter, a, p, ot, ent, p, ot],
+         [enter, a, p, ot, ent, p, o, t],
+         [enter, a, p, o, t, ent, p, ot],
+         [enter, a, p, o, t, ent, p, o, t]
+        ]*/
         System.out.println(allConstructMemo(word5, words5));
-        //[]
+        /*[]*/
         long endMemo = System.currentTimeMillis();
         System.out.println("Time Taken by Memo Function: "+(endMemo-startMemo)+"ms");
     }

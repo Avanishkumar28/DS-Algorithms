@@ -4,6 +4,12 @@ import java.util.*;
 
 public class HowSum {
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(n^m * m)
+     * Space -> O(m)
+     **/
     public static List<Integer> howSumRecursive(int target, int[] numbers){
         if(target == 0)
             return new ArrayList<Integer>();
@@ -20,6 +26,12 @@ public class HowSum {
         return null;
     }
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(m * n * m) => O(n * m^2)
+     * Space -> O(m^2)
+     **/
     public static List<Integer> howSumMemo(int target, int[] numbers){
         Map<Integer, List<Integer>> memo = new HashMap<>();
         return howSMemo(target, numbers, memo);

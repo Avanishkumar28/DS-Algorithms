@@ -5,10 +5,12 @@ import java.util.Map;
 
 public class CanConstruct {
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n^m * m)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n^m * m)
+     * Space Complexity => O(m^2)
+     **/
     public static boolean canConstruct(String target, String[] words){
         if (target.equals(""))
             return true;
@@ -23,10 +25,12 @@ public class CanConstruct {
         return false;
     }
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n * m^2)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n * m^2)
+     * Space Complexity => O(m^2)
+     **/
     public static boolean canConstructMemo(String target, String[] words){
         Map<String, Boolean> memo = new HashMap<>();
         return canConstructMemo(target, words, memo);

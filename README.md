@@ -24,11 +24,22 @@ package algo.dynamic_programming;
 
 public class Fibonacci {
 
+    /**
+     * n -> position of fibonacci sequence
+     * time -> O(2^n)
+     * Space -> O(n)
+     **/
     public static long fib(int position){
         if(position <= 2)
             return 1;
         return fib(position-1)+fib(position-2);
     }
+
+    /**
+     * n -> position of fibonacci sequence
+     * time -> O(n)
+     * Space -> O(n)
+     **/
     public static long fibMemorization(int position){
         long[] memo = new long[position+1];
         return fibMemo(position, memo);
@@ -73,6 +84,12 @@ import java.util.Map;
 public class GridTraveler {
 
     //recursive
+    /**
+     * m -> rows
+     * n -> columns
+     * time -> O(2^(m+n))
+     * Space -> O(m+n)
+     **/
     public static long gridTraveler(int row, int col){
         if(row == 0 || col == 0)
             return 0;
@@ -80,7 +97,14 @@ public class GridTraveler {
             return 1;
         return gridTraveler(row-1, col) + gridTraveler(row,col-1);
     }
+
     //Memorization
+    /**
+     * m -> rows
+     * n -> columns
+     * time -> O(m*n)
+     * Space -> O(m+n)
+     **/
     public static long gridTravelerMemo(int row, int col){
         Map<String, Long> memo = new HashMap<>();
         return gridTMemo(row, col, memo);
@@ -99,10 +123,10 @@ public class GridTraveler {
     }
 
     public static void main(String[] args) {
-//        System.out.println(gridTraveler(1,1)); //1
-//        System.out.println(gridTraveler(1,2)); //1
-//        System.out.println(gridTraveler(2,3)); //3
-//        System.out.println(gridTraveler(18,18)); //2333606220
+        System.out.println(gridTraveler(1,1)); //1
+        System.out.println(gridTraveler(1,2)); //1
+        System.out.println(gridTraveler(2,3)); //3
+        System.out.println(gridTraveler(18,18)); //2333606220
 
         long start = System.currentTimeMillis();
         System.out.println(gridTraveler(18,18));
@@ -135,6 +159,12 @@ import java.util.Map;
 
 public class CanSum {
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(n^m)
+     * Space -> O(m)
+     **/
     public static boolean canSum(int target, int[] numbers){
         if (target == 0)
             return true;
@@ -148,6 +178,12 @@ public class CanSum {
         return false;
     }
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(m * n)
+     * Space -> O(m)
+     **/
     public static boolean canSumMemo(int target, int[] numbers){
         Map<Integer, Boolean> memo = new HashMap<>();
         return canSMemo(target, numbers, memo);
@@ -201,6 +237,12 @@ import java.util.*;
 
 public class HowSum {
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(n^m * m)
+     * Space -> O(m)
+     **/
     public static List<Integer> howSumRecursive(int target, int[] numbers){
         if(target == 0)
             return new ArrayList<Integer>();
@@ -217,6 +259,12 @@ public class HowSum {
         return null;
     }
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(m * n * m) => O(n * m^2)
+     * Space -> O(m^2)
+     **/
     public static List<Integer> howSumMemo(int target, int[] numbers){
         Map<Integer, List<Integer>> memo = new HashMap<>();
         return howSMemo(target, numbers, memo);
@@ -276,10 +324,12 @@ import java.util.Map;
 
 public class BestSum {
 
-    //m -> target sum
-    //n -> numbers.length
-    //time -> O(n^m * m)
-    //Space -> O(m^2)
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(n^m * m)
+     * Space -> O(m^2)
+     **/
     public static List<Integer> bestSumRecursive(int target, int[] numbers){
         if (target == 0)
             return new ArrayList<>();
@@ -303,10 +353,12 @@ public class BestSum {
         return bestResult;
     }
 
-    //m -> target sum
-    //n -> numbers.length
-    //time -> O(m * n * m) => O(m^2 * n)
-    //Space -> O(m^2)
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(m * n * m) => O(m^2 * n)
+     * Space -> O(m^2)
+    **/
     public static List<Integer> bestSumMemo(int target, int[] numbers){
         Map<Integer, List<Integer>> memo = new HashMap<>();
         return bestSumMemo(target, numbers, memo);
@@ -385,10 +437,12 @@ import java.util.Map;
 
 public class CanConstruct {
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n^m * m)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n^m * m)
+     * Space Complexity => O(m^2)
+     **/
     public static boolean canConstruct(String target, String[] words){
         if (target.equals(""))
             return true;
@@ -403,10 +457,12 @@ public class CanConstruct {
         return false;
     }
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n * m^2)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n * m^2)
+     * Space Complexity => O(m^2)
+     **/
     public static boolean canConstructMemo(String target, String[] words){
         Map<String, Boolean> memo = new HashMap<>();
         return canConstructMemo(target, words, memo);
@@ -480,10 +536,12 @@ import java.util.Map;
 
 public class CountConstruct {
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n^m * m)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n^m * m)
+     * Space Complexity => O(m^2)
+     **/
     public static int countConstruct(String target, String[] words){
         if(target.equals(""))
             return 1;
@@ -499,10 +557,12 @@ public class CountConstruct {
         return count;
     }
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n * m^2)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n * m^2)
+     * Space Complexity => O(m^2)
+     **/
     public static int countConstructMemo(String target, String[] words){
         Map<String, Integer> memo = new HashMap<>();
         return countConstructMemo(target, words, memo);
@@ -555,9 +615,20 @@ public class CountConstruct {
         System.out.println("Time Taken by Memo Function: "+(endMemo-startMemo)+"ms");
     }
 }
+
 ```
 
-time-space complexity
+- **time-space complexity**
+  - m -> target length
+  - n -> words length
+  
+_Recursive_
+  - Time Complexity  => O(n^m * m)
+  - Space Complexity => O(m^2)
+  
+ _Memorized_
+  - Time Complexity  => O(n * m^2)
+  - Space Complexity => O(m^2)
 
 ---
 
@@ -568,13 +639,177 @@ time-space complexity
 
 allConstruct Tree
 
+```java
+package algo.dynamic_programming;
 
-time-space complexity
+import java.util.*;
+
+public class AllConstruct {
+
+    public static List<List<String>>  allConstruct(String target, String[] words){
+        if(target.equals(""))
+            return new ArrayList<>(Arrays.asList(new ArrayList<>()));
+
+        List<List<String>>  result = new ArrayList<>();
+        for (String word : words){
+            if (target.indexOf(word) == 0) {
+                String suffix = target.substring(word.length());
+
+                List<List<String>> suffixWays = allConstruct(suffix, words);
+                List<List<String>> targetWays = new ArrayList<>();
+
+                for (List<String> ways : suffixWays) {
+                    List<String> temp = new ArrayList<>();
+                    temp.add(word);
+                    temp.addAll(ways);
+                    targetWays.add(temp);
+                }
+
+                for (List<String> targetWay : targetWays) {
+                    result.add(targetWay);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n^m)
+     * Space Complexity => O(m)
+    **/
+    public static List<List<String>> allConstructMemo(String target, String[] words){
+        Map<String, List<List<String>>> memo = new HashMap<>();
+        return allConstructMemo(target, words, memo);
+    }
+    private static List<List<String>> allConstructMemo(String target, String[] words, Map<String, List<List<String>>> memo){
+        if (target.equals(""))
+            return new ArrayList<>(Arrays.asList(new ArrayList<>()));
+        if (memo.containsKey(target))
+            memo.get(target);
+
+        List<List<String>> result = new ArrayList<>();
+        for (String word : words){
+            if (target.indexOf(word) == 0){
+                String suffix = target.substring(word.length());
+                List<List<String>> suffixWays = allConstructMemo(suffix, words, memo);
+                memo.put(suffix, suffixWays);
+
+                List<List<String>> targetWays = new ArrayList<>();
+                for (List<String> ways : suffixWays){
+                    List<String> temp = new ArrayList<>();
+                    temp.add(word);
+                    temp.addAll(ways);
+                    targetWays.add(temp);
+                }
+                for (List<String> targetWay : targetWays){
+                    result.add(targetWay);
+                }
+
+            }
+        }
+        memo.put(target, result);
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String word1 = "abcdef";
+        String[] words1 = new String[]{"ab", "abc", "cd", "def", "abcd"};
+        String word2 = "skateboard";
+        String[] words2 = new String[]{"bo", "rd", "ate", "t", "ska", "sk", "boar"};
+        String word3 = "purple";
+        String[] words3 = new String[]{"purp", "p", "ur", "le", "purpl"};
+        String word4 = "enterapotentpot";
+        String[] words4 = new String[]{"a", "p", "ent", "enter", "ot", "o", "t"};
+        String word5 = "eeeeeeeeeeeeeeeeaaeeeeeeeeeeeeeeeef";
+        String[] words5 = new String[]{"e", "ee", "eee", "eeeee", "eeeaaeee"};
+
+        System.out.println(allConstruct(word1, words1));
+        /*[
+          [abc, def]
+        ]*/
+        System.out.println(allConstruct(word2, words2));
+        /* []*/
+        System.out.println(allConstruct(word3, words3));
+        /*[
+         [purp, le],
+         [p, ur, p, le]
+        ]*/
+
+        long start = System.currentTimeMillis();
+        System.out.println(allConstruct(word4, words4));
+        /*[
+         [enter, a, p, ot, ent, p, ot],
+         [enter, a, p, ot, ent, p, o, t],
+         [enter, a, p, o, t, ent, p, ot],
+         [enter, a, p, o, t, ent, p, o, t]
+        ]*/
+        System.out.println(allConstruct(word5, words5));
+        /*[]*/
+        long end = System.currentTimeMillis();
+        System.out.println("Time Taken by Recursive: "+(end-start)+"ms");
+
+        long startMemo = System.currentTimeMillis();
+        System.out.println(allConstructMemo(word4, words4));
+        /*[
+         [enter, a, p, ot, ent, p, ot],
+         [enter, a, p, ot, ent, p, o, t],
+         [enter, a, p, o, t, ent, p, ot],
+         [enter, a, p, o, t, ent, p, o, t]
+        ]*/
+        System.out.println(allConstructMemo(word5, words5));
+        /*[]*/
+        long endMemo = System.currentTimeMillis();
+        System.out.println("Time Taken by Memo Function: "+(endMemo-startMemo)+"ms");
+    }
+}
+```
+
+- **time-space complexity**
+  - m -> target length
+  - n -> words length
+  
+_Recursive_
+  - Time Complexity  => O(n^m)
+  - Space Complexity => O(m)
+  
+ _Memorized_
+  - Time Complexity  => O(n^m)
+  - Space Complexity => O(m)
 
 ---
 
 ### fibTab
 
+```java
+package algo.dynamic_programming.tabulation;
+
+public class FibonacciTab {
+
+    /**
+    * n - Position of Fibonacci sequence
+    * Time Complexity  => O(n)
+    * Space Complexity => O(n)
+    **/
+    public static long fibTab(int n){
+        long[] table = new long[n+1];
+        table[0] = 0;
+        table[1] = 1;
+        for (int index = 2; index <= n; index++)
+            table[index] = table[index - 1] + table[index - 2];
+
+        return table[n];
+    }
+
+    public static void main(String[] args) {
+        System.out.println(fibTab(6)); //8
+        System.out.println(fibTab(7)); //13
+        System.out.println(fibTab(8)); //21
+        System.out.println(fibTab(50)); //12586269025
+    }
+}
+```
 
 ---
 

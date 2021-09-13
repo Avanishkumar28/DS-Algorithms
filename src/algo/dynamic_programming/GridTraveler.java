@@ -6,6 +6,12 @@ import java.util.Map;
 public class GridTraveler {
 
     //recursive
+    /**
+     * m -> rows
+     * n -> columns
+     * time -> O(2^(m+n))
+     * Space -> O(m+n)
+     **/
     public static long gridTraveler(int row, int col){
         if(row == 0 || col == 0)
             return 0;
@@ -13,7 +19,14 @@ public class GridTraveler {
             return 1;
         return gridTraveler(row-1, col) + gridTraveler(row,col-1);
     }
+
     //Memorization
+    /**
+     * m -> rows
+     * n -> columns
+     * time -> O(m*n)
+     * Space -> O(m+n)
+     **/
     public static long gridTravelerMemo(int row, int col){
         Map<String, Long> memo = new HashMap<>();
         return gridTMemo(row, col, memo);
@@ -32,10 +45,10 @@ public class GridTraveler {
     }
 
     public static void main(String[] args) {
-//        System.out.println(gridTraveler(1,1)); //1
-//        System.out.println(gridTraveler(1,2)); //1
-//        System.out.println(gridTraveler(2,3)); //3
-//        System.out.println(gridTraveler(18,18)); //2333606220
+        System.out.println(gridTraveler(1,1)); //1
+        System.out.println(gridTraveler(1,2)); //1
+        System.out.println(gridTraveler(2,3)); //3
+        System.out.println(gridTraveler(18,18)); //2333606220
 
         long start = System.currentTimeMillis();
         System.out.println(gridTraveler(18,18));

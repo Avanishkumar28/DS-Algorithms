@@ -5,6 +5,12 @@ import java.util.Map;
 
 public class CanSum {
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(n^m)
+     * Space -> O(m)
+     **/
     public static boolean canSum(int target, int[] numbers){
         if (target == 0)
             return true;
@@ -18,6 +24,12 @@ public class CanSum {
         return false;
     }
 
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(m * n)
+     * Space -> O(m)
+     **/
     public static boolean canSumMemo(int target, int[] numbers){
         Map<Integer, Boolean> memo = new HashMap<>();
         return canSMemo(target, numbers, memo);

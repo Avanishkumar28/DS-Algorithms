@@ -5,10 +5,12 @@ import java.util.Map;
 
 public class CountConstruct {
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n^m * m)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n^m * m)
+     * Space Complexity => O(m^2)
+     **/
     public static int countConstruct(String target, String[] words){
         if(target.equals(""))
             return 1;
@@ -24,10 +26,12 @@ public class CountConstruct {
         return count;
     }
 
-    //m -> target length
-    //n -> words length
-    //Time Complexity  => O(n * m^2)
-    //Space Complexity => O(m^2)
+    /**
+     * m -> target length
+     * n -> words length
+     * Time Complexity  => O(n * m^2)
+     * Space Complexity => O(m^2)
+     **/
     public static int countConstructMemo(String target, String[] words){
         Map<String, Integer> memo = new HashMap<>();
         return countConstructMemo(target, words, memo);

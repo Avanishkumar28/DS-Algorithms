@@ -7,10 +7,12 @@ import java.util.Map;
 
 public class BestSum {
 
-    //m -> target sum
-    //n -> numbers.length
-    //time -> O(n^m * m)
-    //Space -> O(m^2)
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(n^m * m)
+     * Space -> O(m^2)
+     **/
     public static List<Integer> bestSumRecursive(int target, int[] numbers){
         if (target == 0)
             return new ArrayList<>();
@@ -34,10 +36,12 @@ public class BestSum {
         return bestResult;
     }
 
-    //m -> target sum
-    //n -> numbers.length
-    //time -> O(m * n * m) => O(m^2 * n)
-    //Space -> O(m^2)
+    /**
+     * m -> target sum
+     * n -> numbers.length
+     * time -> O(m * n * m) => O(m^2 * n)
+     * Space -> O(m^2)
+    **/
     public static List<Integer> bestSumMemo(int target, int[] numbers){
         Map<Integer, List<Integer>> memo = new HashMap<>();
         return bestSumMemo(target, numbers, memo);

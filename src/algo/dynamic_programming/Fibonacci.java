@@ -2,11 +2,22 @@ package algo.dynamic_programming;
 
 public class Fibonacci {
 
+    /**
+     * n -> position of fibonacci sequence
+     * time -> O(2^n)
+     * Space -> O(n)
+     **/
     public static long fib(int position){
         if(position <= 2)
             return 1;
         return fib(position-1)+fib(position-2);
     }
+
+    /**
+     * n -> position of fibonacci sequence
+     * time -> O(n)
+     * Space -> O(n)
+     **/
     public static long fibMemorization(int position){
         long[] memo = new long[position+1];
         return fibMemo(position, memo);

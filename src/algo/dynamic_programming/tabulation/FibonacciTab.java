@@ -2,6 +2,11 @@ package algo.dynamic_programming.tabulation;
 
 public class FibonacciTab {
 
+    /**
+     * n - Position of Fibonacci sequence
+     * Time Complexity  => O(n)
+     * Space Complexity => O(n)
+     **/
     public static long fibTab(int n){
         long[] table = new long[n+1];
         table[0] = 0;
