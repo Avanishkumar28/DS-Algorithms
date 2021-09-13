@@ -780,6 +780,18 @@ _Recursive_
 
 ---
 
+## Tabulation Recipe
+
+---
+- visualize the problem as a table
+- size the table based on the inputs
+- initialize the table with default values
+- seed the trivial answer into the table
+- iterate through the table
+- fill further positions based on the current position
+
+---
+
 ### fibTab
 
 ```java
@@ -818,17 +830,6 @@ public class FibonacciTab {
 
 ---
 
-### Tabulation Recipe
-
-- visualize the problem as a table
-- size the table based on the inputs
-- initialize the table with default values
-- seed the trivial answer into the table
-- iterate through the table
-- fill further positions based on the current position
-
----
-
 ### canSumTab
 
 
@@ -857,6 +858,7 @@ public class FibonacciTab {
 ---
 
 ### Dynamic Programming
+Key Take away
 
 - notice any overlapping subproblems
 - decide what is the trivially smallest input
