@@ -793,6 +793,11 @@ _Recursive_
 ---
 
 ### fibTab
+![images/fibTab_1.PNG](images/fibTab_1.PNG)
+![images/fibTab_2.PNG](images/fibTab_2.PNG)
+![images/fibTab_3.PNG](images/fibTab_3.PNG)
+![images/fibTab_4.PNG](images/fibTab_4.PNG)
+![images/fibTab_5.PNG](images/fibTab_5.PNG)
 
 ```java
 package algo.dynamic_programming.tabulation;
@@ -826,6 +831,11 @@ public class FibonacciTab {
 ---
 
 ### gridTravelerTab
+![images/gridTravelerTab_1.PNG](images/gridTravelerTab_1.PNG)
+![images/gridTravelerTab_2.PNG](images/gridTravelerTab_2.PNG)
+![images/gridTravelerTab_3.PNG](images/gridTravelerTab_3.PNG)
+![images/gridTravelerTab_4.PNG](images/gridTravelerTab_4.PNG)
+
 ```java
 package algo.dynamic_programming.tabulation;
 
@@ -863,6 +873,11 @@ public class GridTravelerTab {
 ---
 
 ### canSumTab
+![images/canSumTab_0.PNG](images/canSumTab_0.PNG)
+![images/canSumTab_1.PNG](images/canSumTab_1.PNG)
+![images/canSumTab_2.PNG](images/canSumTab_2.PNG)
+![images/canSumTab_3.PNG](images/canSumTab_3.PNG)
+
 ```java
 package algo.dynamic_programming.tabulation;
 
@@ -908,6 +923,9 @@ public class CanSumTab {
 ---
 
 ### howSumTab
+![images/howSumTab_1.PNG](images/howSumTab_1.PNG)
+![images/howSumTab_2.PNG](images/howSumTab_2.PNG)
+
 ```java
 package algo.dynamic_programming.tabulation;
 
@@ -962,6 +980,11 @@ public class HowSumTab {
 ---
 
 ### bestSumTab
+![images/bestSumTab_1.PNG](images/bestSumTab_1.PNG)
+![images/bestSumTab_2.PNG](images/bestSumTab_2.PNG)
+![images/bestSumTab_3.PNG](images/bestSumTab_3.PNG)
+![images/bestSumTab_4.PNG](images/bestSumTab_4.PNG)
+
 ```java
 package algo.dynamic_programming.tabulation;
 
