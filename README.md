@@ -826,22 +826,194 @@ public class FibonacciTab {
 ---
 
 ### gridTravelerTab
+```java
+package algo.dynamic_programming.tabulation;
 
+public class GridTravelerTab {
 
+    /**
+     * m - number of rows in grid
+     * n - number of columns in grid
+     * Time Complexity  => O(m*n)
+     * Space Complexity => O(m*n)
+     **/
+    public static long gridTraveler(int m, int n){
+        long[][] table = new long[m+1][n+1];
+        table[1][1] = 1;
+        for (int row = 0; row <= m; row++){
+            for (int col = 0; col <= n; col++){
+                long current = table[row][col];
+                if(col+1 <= n) table[row][col+1] += current;
+                if(row+1 <= m) table[row+1][col] += current;
+            }
+        }
+
+        return table[m][n];
+    }
+
+    public static void main(String[] args) {
+        System.out.println(gridTraveler(1,1)); //1
+        System.out.println(gridTraveler(2,3)); //3
+        System.out.println(gridTraveler(3,2)); //3
+        System.out.println(gridTraveler(3,3)); //6
+        System.out.println(gridTraveler(18,18)); //233606220
+    }
+}
+```
 ---
 
 ### canSumTab
+```java
+package algo.dynamic_programming.tabulation;
 
+public class CanSumTab {
 
+    /**
+     * m - target sum
+     * n - numbers.length
+     * Time Complexity  => O(m*n)
+     * Space Complexity => O(m)
+     **/
+    public static boolean canSum(int target, int[] numbers){
+        boolean[] table = new boolean[target+1];
+        //base case 0 can be created without using any number from the numbers
+        table[0] = true;
+
+        for (int index = 0; index <= target; index++){
+            if (table[index]){
+                for (int num : numbers){
+                    if ((index + num) <= target)
+                        table[(index + num)] = table[index];
+                }
+            }
+        }
+
+        return table[target];
+    }
+
+    public static void main(String[] args) {
+        int[] numbers1 = new int[]{2,3};
+        int[] numbers2 = new int[]{4,5,3};
+        int[] numbers3 = new int[]{2,4};
+        int[] numbers4 = new int[]{2,5,3};
+        int[] numbers5 = new int[]{7,14};
+        System.out.println(canSum(7, numbers1)); //true
+        System.out.println(canSum(7, numbers2)); //true
+        System.out.println(canSum(7, numbers3)); //false
+        System.out.println(canSum(8, numbers4)); //true
+        System.out.println(canSum(300, numbers5)); //false
+    }
+}
+```
 ---
 
 ### howSumTab
+```java
+package algo.dynamic_programming.tabulation;
 
+import java.util.ArrayList;
+import java.util.List;
 
+public class HowSumTab {
+
+    /**
+     * m - target sum
+     * n - numbers.length
+     * Time Complexity  => O(m*n*m) => O(m^2 * n)
+     * Space Complexity => O(m)
+     **/
+    public static List<Integer> howSum(int target, int[] numbers){
+        List<Integer>[] table = new List[target+1];
+        //base case 0 can be created without using any number from the numbers
+        table[0] = new ArrayList<>();
+
+        for (int index = 0; index < table.length; index++){
+            if (table[index] != null){
+                for (int num : numbers){
+                    if ((index + num) < table.length){
+                        //create a new list from
+                        List<Integer> ways = new ArrayList<>(table[index]);
+                        //add current num
+                        ways.add(num);
+                        //replace old list with new one
+                        table[index+num] = ways;
+                    }
+                }
+            }
+        }
+
+        return table[target];
+    }
+
+    public static void main(String[] args) {
+        int[] numbers1 = new int[]{2,3};
+        int[] numbers2 = new int[]{4,5,3};
+        int[] numbers3 = new int[]{2,4};
+        int[] numbers4 = new int[]{2,5,3};
+        int[] numbers5 = new int[]{7,14};
+        System.out.println(howSum(7, numbers1)); //[2,2,3]
+        System.out.println(howSum(7, numbers2)); //[3,4]
+        System.out.println(howSum(7, numbers3)); //null
+        System.out.println(howSum(8, numbers4)); //[3,5] or [2,2,2,2] or [2,3,3]
+        System.out.println(howSum(300, numbers5)); //null
+    }
+}
+```
 ---
 
 ### bestSumTab
+```java
+package algo.dynamic_programming.tabulation;
 
+import java.util.ArrayList;
+import java.util.List;
+
+public class BestSumTab {
+
+    /**
+     * m - target sum
+     * n - numbers.length
+     * Time Complexity  => O(m*n*m) => O(m^2 * n)
+     * Space Complexity => O(m)
+     **/
+    public static List<Integer> bestSum(int target, int[] numbers){
+        List<Integer>[] table = new List[target+1];
+        //base case: sum 0 can be construct without using any number for numbers
+        table[0] = new ArrayList<>();
+
+        for (int index = 0; index < table.length; index++){
+            if (table[index] != null){
+                for (int num : numbers){
+                    if (table.length > index+num){
+                        List<Integer> ways = new ArrayList<>(table[index]);
+                        ways.add(num);
+                        //check if list at index+num is null OR greater then the new ways
+                        if (table[index+num] == null || table[index+num].size() > ways.size())
+                            //replace old list of ways
+                            table[index+num] = ways;
+                    }
+                }
+            }
+        }
+        return table[target];
+    }
+
+    public static void main(String[] args) {
+        int[] numbers1 = new int[]{2,3};
+        int[] numbers2 = new int[]{2,4,5,3};
+        int[] numbers3 = new int[]{2,4};
+        int[] numbers4 = new int[]{2,5,3};
+        int[] numbers5 = new int[]{7,14};
+        int[] numbers6 = new int[]{2,4,5,3,15,30};
+        System.out.println(bestSum(6, numbers1)); //[3,3]
+        System.out.println(bestSum(7, numbers2)); //[3,4] or [2,5]
+        System.out.println(bestSum(7, numbers3)); //null
+        System.out.println(bestSum(8, numbers4)); //[3,5]
+        System.out.println(bestSum(300, numbers5)); //null
+        System.out.println(bestSum(300, numbers6)); //[30,30,30,30,30,30,30,30,30,30]
+    }
+}
+```
 ---
 
 ### canConstructTab
