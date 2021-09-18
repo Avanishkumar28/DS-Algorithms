@@ -1316,3 +1316,9 @@ Key Take away
 - draw a strategy first!!!
 
 ---
+
+##### References
+
+    https://www.youtube.com/watch?v=oBt53YbR9Kk
+    https://github.com/irfan7junior/algorithms-in-java
+    
