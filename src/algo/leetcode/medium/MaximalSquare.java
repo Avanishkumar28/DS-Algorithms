@@ -30,25 +30,19 @@ public class MaximalSquare {
         if(matrix == null)
             return 0;
         Map<String, Integer> memo = new HashMap<>();
+        int maxV = 0;
         for(int row = 0; row < matrix.length; row++){
             for(int col = 0; col < matrix[row].length; col++){
                 String key = row+"_"+col;
-                if(row == 0 || col == 0){
+                //current row/col or current element is '0' just add as 0 do nothing
+                if(row == 0 || col == 0 || matrix[row][col]-'0' == 0){
                     memo.put(key, matrix[row][col]-'0');
-                    continue;
                 }else { //chek up, left and diagonal(up-left) if all > 0
                     //then add diagonal+current
                     memo.put(key, (matrix[row][col]-'0')+getPrevious(row, col, memo));
-
                 }
-
-
+                maxV = Math.max(maxV, memo.get(key));
             }
-        }
-        int maxV = 0;
-        for(String key : memo.keySet()){
-            if(memo.get(key) > maxV)
-                maxV = memo.get(key);
         }
 
         return maxV*maxV;
@@ -61,6 +55,23 @@ public class MaximalSquare {
                 , memo.get((row)+"_"+(col-1)));
     }
 
+    private static int maximalSquareTabular(char[][] matrix){
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        int[][] table = new int[row+1][col+1];
+        int maxV = 0;
+        for(int i = 1; i <= row; i++){
+            for(int j = 1; j <= col; j++){
+                if(matrix[i-1][j-1] == '1'){
+                    table[i][j] = 1 + Math.min(table[i-1][j-1], Math.min(table[i-1][j], table[i][j-1]));
+                    maxV = Math.max(maxV, table[i][j]);
+                }
+            }
+        }
+        return maxV*maxV;
+    }
+
     public static void main(String[] args) {
         char[][] test1Matrix = new char[][]{
                 {'1','0','1','0','0'},
@@ -69,13 +80,19 @@ public class MaximalSquare {
                 {'1','0','0','1','0'},
         };
         System.out.println(maximalSquare(test1Matrix)); //4
+        System.out.println(maximalSquareTabular(test1Matrix)); //4
+        System.out.println("--------------------");
         char[][] test2Matrix = new char[][]{
                 {'0','1'},
                 {'1','0'}
         };
         System.out.println(maximalSquare(test2Matrix)); //1
+        System.out.println(maximalSquareTabular(test2Matrix)); //1
+        System.out.println("--------------------");
         char[][] test3Matrix = new char[][]{ {'0'}  };
         System.out.println(maximalSquare(test3Matrix)); //0
+        System.out.println(maximalSquareTabular(test3Matrix)); //0
+        System.out.println("--------------------");
         char[][] test4Matrix = new char[][]{
                 {'1','1','1','1','0'},
                 {'1','1','1','1','0'},
@@ -84,5 +101,18 @@ public class MaximalSquare {
                 {'0','0','1','1','1'}
         };
         System.out.println(maximalSquare(test4Matrix)); //16
+        System.out.println(maximalSquareTabular(test4Matrix)); //16
+        System.out.println("--------------------");
+        char[][] test5Matrix = new char[][]{
+                {'1','0','1','1','0','1'},
+                {'1','1','1','1','1','1'},
+                {'0','1','1','0','1','1'},
+                {'1','1','1','0','1','0'},
+                {'0','1','1','1','1','1'},
+                {'1','1','0','1','1','1'}
+        };
+        System.out.println(maximalSquare(test5Matrix)); //4
+        System.out.println(maximalSquareTabular(test5Matrix)); //4
+        System.out.println("--------------------");
     }
 }
