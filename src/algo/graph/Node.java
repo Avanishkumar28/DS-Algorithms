@@ -22,7 +22,7 @@ public class Node<T> {
 
     public List<Node<T>> getNeighbours() {
         if (neighbours == null)
-            return new ArrayList<Node<T>>();;
+            return new ArrayList<Node<T>>();
         return new ArrayList<Node<T>>(neighbours);
     }
 
