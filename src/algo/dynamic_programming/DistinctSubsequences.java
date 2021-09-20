@@ -25,6 +25,7 @@ public class DistinctSubsequences {
 
         int n = s.length();
         int m = t.length();
+        //one extra row for "" and one extra col for ""
         int[][] dp = new int[m+1][n+1];
 
         //fill dp for t-->""
