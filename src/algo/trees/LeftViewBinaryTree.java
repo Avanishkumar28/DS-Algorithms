@@ -37,7 +37,7 @@ public class LeftViewBinaryTree {
 
     public static void main(String[] args) {
 
-        Node root = BinaryTreeUtil.getBinaryTree();
+        Node root = BinaryTreeUtil.getBinaryTree1();
         List<String> leftToRight = BinaryTreeUtil.treeLeftToRight(root);
         System.out.println(leftToRight);
         System.out.println("*****************");
