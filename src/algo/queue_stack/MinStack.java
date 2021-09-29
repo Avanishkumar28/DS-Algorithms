@@ -1,6 +1,5 @@
 package algo.queue_stack;
 
-import java.util.Random;
 import java.util.Stack;
 
 public class MinStack {
@@ -8,15 +7,15 @@ public class MinStack {
     private Stack<Integer> stack = new Stack<>();
     private Stack<Integer> minStack = new Stack<>();
 
-    public int getMin(){
-        if (minStack == null)
-            return Integer.MIN_VALUE;
+    public void getMin(){
+        if (minStack.isEmpty())
+            System.out.println(Integer.MIN_VALUE);
+        else
+            System.out.println(minStack.pop());
 
-        stack.pop();
-        return minStack.pop();
     }
     public void push(int val){
-        if (stack.isEmpty()){
+        if (stack.isEmpty() && minStack.isEmpty()){
             stack.push(val);
             minStack.push(val);
         }
@@ -25,5 +24,31 @@ public class MinStack {
         else
             minStack.push(val);
         stack.push(val);
+    }
+    public void pop(){
+        if (!stack.isEmpty() && !minStack.isEmpty()){
+            stack.pop();
+            minStack.pop();
+            System.out.println("After pop");
+            System.out.println(stack.toString());
+            System.out.println(minStack.toString());
+        }
+    }
+
+    public static void main(String[] args) {
+        MinStack ms = new MinStack();
+        ms.push(10);
+        ms.pop();
+        ms.push(3);
+        ms.push(8);
+        ms.getMin();
+        ms.push(1);
+        ms.push(7);
+        ms.getMin();
+        ms.push(5);
+        ms.pop();
+        ms.pop();
+        ms.pop();
+        ms.getMin();
     }
 }
