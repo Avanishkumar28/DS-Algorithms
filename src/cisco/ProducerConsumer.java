@@ -2,6 +2,11 @@ package cisco;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Create two thread run both 1-100, have a List as command Database.
+        thread1 will add current number to List
+        thread2 will remove number from list
+ */
 
 public class ProducerConsumer {
 
